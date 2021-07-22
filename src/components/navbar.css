@@ -1,7 +1,7 @@
 .navBar {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(228, 28, 28, 0.9);
+  background-image: radial-gradient(circle, #f22742, #f50525);
   box-shadow: 5px 10px 18px rgba(228, 28, 28, 0.9);
   line-height: 60px;
   font-size: 30px;
