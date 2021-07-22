@@ -1,5 +1,5 @@
 import React from "react";
-import Options from "./options";
+import Options from "../options";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import "./navbar.css";
 
