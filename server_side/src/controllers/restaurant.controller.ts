@@ -17,13 +17,12 @@ class RestaurantControllers {
 
   static async fetchRestaurants(page: number) {
     try {
-      let projection = {
-        _id: 0,
-        restaurant_id: 0,
-      };
       let cursor: Restaurant[] = await restaurants
         .find()
-        .project({ projection })
+        .project({
+          _id: 0,
+          restaurant_id: 0,
+        })
         .skip(page * 20)
         .limit(20)
         .toArray();

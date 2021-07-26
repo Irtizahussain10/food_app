@@ -9,7 +9,7 @@ Router.get("/:page", async (req: Request, res: Response) => {
     if (!page) {
       res.status(400).send("Bad Request");
     }
-    let restaurants = await RestaurantControllers.fetchRestaurants(page);
+    let restaurants = await RestaurantControllers.fetchRestaurants(page - 1);
     if (restaurants.length === 0) {
       res.status(404).send(restaurants);
     } else if (restaurants[0] === "error connecting") {

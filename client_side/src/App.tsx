@@ -1,13 +1,11 @@
 import React from "react";
-import NavBar from "./components/navbar/navbar";
-import Home from "./components/home/home";
+import Routes from "./Routes/routes";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
-        <Home />
+        <Routes />
       </div>
     );
   }
