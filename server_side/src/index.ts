@@ -3,6 +3,8 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
+import Router from "./routes/restaurants.routes";
+import RestaurantControllers from "./controllers/restaurant.controller";
 
 dotenv.config();
 
@@ -20,25 +22,35 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@sandbox.ibylc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
-async function connect() {
-  try {
-    const client = new MongoClient(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    let connection = await client.connect();
-    let query = await connection
-      .db("sample_restaurants")
-      .collection("restaurants")
-      .findOne();
-    console.log(query);
-    await client.close();
-  } catch (e) {
-    console.error(e);
+class connect {
+  static async connect() {
+    try {
+      const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        connectTimeoutMS: 5000,
+      });
+      let connection = await client.connect();
+      return connection;
+    } catch (e) {
+      console.error(e);
+      process.exit();
+    }
   }
 }
 
-app.listen(PORT, () => {
-  connect();
-  console.log(`Listening at port ${PORT}`);
-});
+app.use("/", Router);
+
+connect
+  .connect()
+  .then((client) => {
+    RestaurantControllers.connect(client);
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Listening at port ${PORT}`);
+    });
+  })
+  .catch(() => {
+    process.exit(1);
+  });
