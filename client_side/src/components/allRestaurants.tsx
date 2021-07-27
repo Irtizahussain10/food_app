@@ -27,6 +27,7 @@ class Restaurants extends React.Component<Props, Restaurant> {
   }
 
   render() {
+    let key = -1;
     if (this.state.restaurants.length === 0) {
       return (
         <div>
@@ -39,10 +40,28 @@ class Restaurants extends React.Component<Props, Restaurant> {
       return (
         <div>
           {this.state.restaurants.map((restaurant) => {
+            key += key;
+            let totalGrade = 0;
+            let totalAvailableGrades = 0;
             return (
-              <div>
+              <div key={key}>
                 <p>{restaurant.name}</p>
-                <p>{restaurant.address?.street}</p>
+                <p>
+                  {restaurant.address?.street}, Building{" "}
+                  {restaurant.address?.building}, {restaurant.borough},
+                  (zipcode:
+                  {restaurant.address?.zipcode})
+                </p>
+                <p>Cuisines: {restaurant.cuisine}</p>
+                {restaurant.grades?.forEach((grade) => {
+                  totalGrade += grade.score;
+                  totalAvailableGrades += 20;
+                })}
+                <p>
+                  Scores: {totalGrade}/{totalAvailableGrades} (
+                  {totalAvailableGrades / 20} reviews)
+                </p>
+                <hr />
               </div>
             );
           })}

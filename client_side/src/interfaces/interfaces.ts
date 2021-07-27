@@ -3,7 +3,7 @@ export interface Props {}
 interface grades {
   date?: string;
   grade?: string;
-  score?: number;
+  score: number;
 }
 
 interface Restaurants {
@@ -15,7 +15,7 @@ interface Restaurants {
   };
   borough?: string;
   cuisine?: string;
-  grades?: grades[];
+  grades : grades[];
   name: string;
 }
 
