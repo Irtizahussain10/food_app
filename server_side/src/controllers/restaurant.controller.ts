@@ -31,6 +31,15 @@ class RestaurantControllers {
       return ["error connecting"];
     }
   }
+
+  static async fetchRestaurantCount() {
+    try {
+      let cursor: number = await restaurants.countDocuments();
+      return cursor;
+    } catch (error) {
+      return ["error connecting"];
+    }
+  }
 }
 
 export default RestaurantControllers;

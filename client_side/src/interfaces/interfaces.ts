@@ -15,12 +15,14 @@ interface Restaurants {
   };
   borough?: string;
   cuisine?: string;
-  grades : grades[];
+  grades: grades[];
   name: string;
 }
 
 export interface Restaurant {
   restaurants: Restaurants[];
   page: number;
-  error: string
+  error: string;
+  totalRestaurants: number;
+  isLoading: boolean;
 }
