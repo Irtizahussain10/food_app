@@ -7,9 +7,9 @@ interface grades {
 }
 
 interface Restaurants {
-  address?: {
+  address: {
     building?: number;
-    coord?: [number, number];
+    coord: [number, number];
     street?: string;
     zipcode?: string;
   };
@@ -23,6 +23,7 @@ export interface Restaurant {
   restaurants: Restaurants[];
   page: number;
   error: string;
+  showMap: boolean;
   totalRestaurants: number;
   isLoading: boolean;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "../components/navbar/navbar";
 import Home from "../components/home/home";
-import Restaurant from "../components/allRestaurants";
+import Restaurant from "../components/allRestaurants/allRestaurants";
 
 class Routes extends React.Component {
   render() {
